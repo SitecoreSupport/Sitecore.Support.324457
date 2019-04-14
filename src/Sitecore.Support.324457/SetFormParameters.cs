@@ -43,7 +43,7 @@ namespace Sitecore.Support.ExperienceForms.Mvc.Pipelines.RenderForm
       {
         args.Attributes.Add("class", args.ViewModel.CssClass);
       }
-      args.QueryString = new RouteValueDictionary(((IEnumerable<string>)_queryStringProvider.QueryParameters.AllKeys).ToDictionary((Func<string, string>)((string key) => key), (Func<string, object>)((string key) => _queryStringProvider.QueryParameters[key])));
+      args.QueryString = new RouteValueDictionary(((IEnumerable<string>)_queryStringProvider.QueryParameters.AllKeys.Where(k=>k!=null)).ToDictionary((Func<string, string>)((string key) => key), (Func<string, object>)((string key) => _queryStringProvider.QueryParameters[key])));
       args.RouteName = MvcSettings.SitecoreRouteName;
     }
   }
